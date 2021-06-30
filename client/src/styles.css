@@ -1,0 +1,17 @@
+ 
+body {
+    background:
+    linear-gradient(
+      rgba(1, 1, 1, 0.5), 
+      rgba(1, 1, 1, 0.5)
+    ),
+    url(https://worktankwebcasts.com/wp-content/uploads/2019/04/Teams-Logo.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
