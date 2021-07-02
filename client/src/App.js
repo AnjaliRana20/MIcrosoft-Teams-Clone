@@ -6,6 +6,9 @@ import Videoplayer from './components/Videoplayer';
 import Notifications from './components/Notifications';
 import Options from './components/Options';
 import Buttons from './components/Buttons';
+import Popup from './CallPopup';
+import Chat from './ChatPopup';
+
 const useStyles = makeStyles((theme) => ({
     appBar: {
       borderRadius: 15,
@@ -42,6 +45,8 @@ const  App = () => {
                 <Notifications />
             </Options>
             <Buttons />
+            <Popup />
+            <Chat />
         </div>
     );
 }

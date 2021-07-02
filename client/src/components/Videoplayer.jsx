@@ -15,11 +15,23 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('xs')]: {
       flexDirection: 'column',
     },
+    margin: '50px',
+   
   },
   paper: {
-    padding: '10px',
+    padding: '2px',
     border: '2px solid black',
     margin: '40px',
+    backgroundColor: '#000000',
+    
+  },
+  typography: {
+    fontFamily: 'Brush Script MT, Brush Script Std, cursive',
+    fontStyle: 'italic',
+    fontWeight: 'bold',
+    margin: '6px',
+    color: '#FFFFFF',
+    fontStretch: 'ultra-condensed',
   },
 }));
 
@@ -32,7 +44,7 @@ const VideoPlayer = () => {
       {stream && (
         <Paper className={classes.paper}>
           <Grid item xs={12} md={6}>
-            <Typography variant="h5" gutterBottom>{name || 'Name'}</Typography>
+            <Typography className={classes.typography} variant="h5" gutterBottom>{name || 'You'}</Typography>
             <video playsInline muted ref={myVideo} autoPlay className={classes.video} />
           </Grid>
         </Paper>
