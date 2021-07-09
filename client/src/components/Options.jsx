@@ -14,67 +14,90 @@ const useStyles = makeStyles((theme) => ({
   },
   gridContainer: {
     
-    width: '100%',
-    [theme.breakpoints.down('xs')]: {
-      flexDirection: 'column',
-    },
+   
+  position: 'absolute',
+  left: '30px',
+  top: '150px',
+  bottom: '10px',
+  width: '300px',
+  height: '380px',
+  border: '3px solid black',
+  borderRadius: '8%',
+  backgroundColor: '#FFFFFF',
+  justifyContent:'center',
+  alignItems:'center',
   },
   container: {
-    width: '600px',
-    margin: '35px 0',
-    padding: 0,
+    width: '300px',
+    margin: '0px 0',
+    padding: 10,
     [theme.breakpoints.down('xs')]: {
-      width: '80%',
+      width: '20%',
     },
+    justifyContent:'center',
+    alignItems:'center',
   },
   margin: {
     marginTop: 20,
   },
   padding: {
-    padding: 20,
+    padding: 8,
   },
   paper: {
-    padding: '10px 20px',
+    padding: '10px 15px',
     border: '2px solid black',
+    backgroundColor: '#000000',
   },
 }));
 
 const Options = ({ children }) => {
-  const { me, name, setName} = useContext(SocketContext);
+  const { me, name, setName, userName, setUserName} = useContext(SocketContext);
   const [idToCall, setIdToCall] = useState('');
+  
   const classes = useStyles();
   const { callAccepted, callEnded, leaveCall,  callUser } = useContext(SocketContext);
   return (
     <Container className={classes.container}>
-      <Paper elevation={10} className={classes.paper}>
+      <Paper elevation={10} >
         <form className={classes.root} noValidate autoComplete="off">
         <Grid container className={classes.gridContainer}>
-            <Grid item xs={12} md={6} className={classes.padding}>
-              <Typography gutterBottom variant="h6">Account Info</Typography>
-              <TextField label="Name" value={name} onChange={(e) => setName(e.target.value)} fullWidth />
+            <Grid item xs={12} className={classes.padding}>
+              <Typography gutterBottom style={{backgroundColor: 'darkblue', 
+      border: "3px solid black",position: 'absolute',
+      left: '60px', top: '8px', width: '50%',fontFamily: 'Brush Script MT, Brush Script Std, cursive',
+  
+    fontWeight: 'bold', color: '#FFFFFF',textAlign:'center',justifyContent:'center', }} variant="h6">WELCOME</Typography>
+              
+              <br></br>
+              <TextField label="Your Name" value={name} onChange={(e) => setName(e.target.value)}  fullWidth/>
               <CopyToClipboard text={me} className={classes.margin}>
-                <Button variant="contained" style={{backgroundColor: '#000000', color: '#FFFFFF'}}  startIcon={<Assignment fontSize="large" />}>
+                <Button variant="contained"  fullWidth style={{backgroundColor: '#000000', color: '#FFFFFF'}}  startIcon={<Assignment fontSize="large" />} fullwidth>
                   Copy Your ID
                 </Button>
               </CopyToClipboard>
+              
             </Grid>
-            <Grid item xs={12} md={6} className={classes.padding}>
-              <Typography gutterBottom variant="h6">Make a call</Typography>
-              <TextField label="ID to call" value={idToCall} onChange={(e) => setIdToCall(e.target.value)} fullWidth />
-              {callAccepted && !callEnded ? (
-                <Button variant="contained" color="secondary" startIcon={<PhoneDisabledOutlined fontSize="large" />} fullWidth onClick={leaveCall} className={classes.margin}>
+            
+            <Grid item xs={12} className={classes.padding}>
+              <Typography gutterBottom style={{backgroundColor: 'darkblue', 
+      border: "3px solid black",position: 'absolute',
+      left: '60px', top: '200px', width: '50%',fontFamily: 'Brush Script MT, Brush Script Std, cursive',  
+    fontWeight: 'bold', color: '#FFFFFF',textAlign:'center',justifyContent:'center', }} variant="h6">LETS CALL</Typography>
+              <TextField  fullWidth label="ID to call" value={idToCall} onChange={(e) => setIdToCall(e.target.value)} />
+              { callAccepted && !callEnded ? (
+                <Button variant="contained" color="secondary" fullWidth startIcon={<PhoneDisabledOutlined fontSize="large" />} onClick={leaveCall} className={classes.margin}>
                   Hang Up
                 </Button>
               ) : (
-                <Button variant="contained" style={{backgroundColor: '#000000', color: '#FFFFFF'}} startIcon={<PhoneEnabledOutlined fontSize="large" />} onClick={() => callUser(idToCall)} className={classes.margin}>
+                <Button variant="contained"  fullWidth style={{backgroundColor: '#000000', color: '#FFFFFF'}} startIcon={<PhoneEnabledOutlined fontSize="large" />} onClick={() => callUser(idToCall)} className={classes.margin}>
                   
                 </Button>
               )}
             </Grid>
           </Grid>
         </form>
-        {children}
       </Paper>
+       {children}
     </Container>
   );
 };

@@ -5,21 +5,21 @@ import Peer from 'simple-peer';
 const SocketContext = createContext();
 
 const socket = io('http://localhost:5000');
-//const socket = io('https://microsoft-teams-clone-app.herokuapp.com/');
+//const socket = io('https://my-first-video-calling-app.herokuapp.com/');
 
 const ContextProvider = ({ children }) => {
-  const [callAccepted, setCallAccepted] = useState(false);
+  var [callAccepted, setCallAccepted] = useState(false);
   const [callEnded, setCallEnded] = useState(false);
   const [stream, setStream] = useState();
   const [name, setName] = useState('');
+  const [userName, setUserName] = useState('');
   const [call, setCall] = useState({});
   const [me, setMe] = useState('');
-
   const senders = useRef([]);
   const myVideo = useRef();
   const userVideo = useRef();
   const connectionRef = useRef();
-  const peerRef = useRef();
+ 
   useEffect(() => {
     navigator.mediaDevices.getUserMedia({ video: true, audio: true })
       .then((currentStream) => {
@@ -29,10 +29,17 @@ const ContextProvider = ({ children }) => {
       });
     
     socket.on('me', (id) => setMe(id));
-
+   
     socket.on('callUser', ({ from, name: callerName, signal }) => {
-      setCall({ isReceivingCall: true, from, name: callerName, signal });
+      setCall({ isReceivingCall: true, from, name:callerName, signal });
+      
     });
+    socket.on("callEnded", ()=>{
+      window.localStorage.removeItem("state");
+      setCallEnded(true);
+      window.location.reload();
+    });
+    
   }, []);
   
   const answerCall = () => {
@@ -52,12 +59,13 @@ const ContextProvider = ({ children }) => {
 
     connectionRef.current = peer;
   };
-
+  
   const callUser = (id) => {
     const peer = new Peer({ initiator: true, trickle: false, stream });
 
     peer.on('signal', (data) => {
-      socket.emit('callUser', { userToCall: id, signalData: data, from: me, name });
+      socket.emit('callUser', { userToCall: id, signalData: data, from: me, name});
+      
     });
 
     peer.on('stream', (currentStream) => {
@@ -65,22 +73,24 @@ const ContextProvider = ({ children }) => {
     });
 
     socket.on('callAccepted', (signal) => {
+      window.localStorage.removeItem("state");
       setCallAccepted(true);
-
+      setCall({to: 'Isha'});
       peer.signal(signal);
     });
 
     connectionRef.current = peer;
   };
   
+
   const leaveCall = () => {
+    window.localStorage.removeItem("state");
+    socket.emit("callEnded");
     setCallEnded(true);
-
     connectionRef.current.destroy();
-
     window.location.reload();
+    
   };
-  
   let micSwitch = true;
   let videoSwitch = true;
   
@@ -102,7 +112,8 @@ const ContextProvider = ({ children }) => {
 
   function shareScreen() {
     navigator.mediaDevices.getDisplayMedia({ cursor: true }).then(stream => {
-        const screenTrack = stream.getTracks()[0];
+        var screenTrack = stream.getTracks()[0];
+        console.log(stream.getTracks()[0]);
         senders.current.find(sender => sender.track.kind === 'video').replaceTrack(screenTrack);
         screenTrack.onended = function() {
             senders.current.find(sender => sender.track.kind === "video").replaceTrack(stream.current.getTracks()[1]);

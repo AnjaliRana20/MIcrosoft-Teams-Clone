@@ -5,7 +5,7 @@ import { SocketContext } from '../SocketContext';
 
 const useStyles = makeStyles((theme) => ({
   video: {
-    width: '550px',
+    width: '500px',
     [theme.breakpoints.down('xs')]: {
       width: '300px',
     },
@@ -16,14 +16,12 @@ const useStyles = makeStyles((theme) => ({
       flexDirection: 'column',
     },
     margin: '50px',
-   
   },
   paper: {
     padding: '2px',
     border: '2px solid black',
     margin: '40px',
     backgroundColor: '#000000',
-    
   },
   typography: {
     fontFamily: 'Brush Script MT, Brush Script Std, cursive',
@@ -49,10 +47,11 @@ const VideoPlayer = () => {
           </Grid>
         </Paper>
       )}
+      
       {callAccepted && !callEnded && (
         <Paper className={classes.paper}>
           <Grid item xs={12} md={6}>
-            <Typography variant="h5" gutterBottom>{call.name || 'Name'}</Typography>
+            <Typography className={classes.typography} variant="h5" gutterBottom>{call.name || call.to  || 'Unknown'}</Typography>
             <video playsInline ref={userVideo} autoPlay className={classes.video} />
           </Grid>
         </Paper>

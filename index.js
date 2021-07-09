@@ -18,18 +18,28 @@ app.get('/', (req, res) => {
 });
 
 io.on("connection", (socket) => {      // Backend, contains what to do after having connection to the socket
+	
 	socket.emit("me", socket.id);   // me since I joined
-
+	
 	socket.on("disconnect", () => {
 		socket.broadcast.emit("callEnded")
+		socket.on("callEnded", () => {
+			socket.broadcast.emit("callEnded");
+		  });
 	});
 
 	socket.on("callUser", ({ userToCall, signalData, from, name }) => {
-		io.to(userToCall).emit("callUser", { signal: signalData, from, name });
+		io.to(userToCall).emit("callUser", { signal: signalData, from, name});
+		socket.on("callEnded", () => {
+			socket.broadcast.emit("callEnded");
+		  });
 	});
 
 	socket.on("answerCall", (data) => {
 		io.to(data.to).emit("callAccepted", data.signal)
+		socket.on("callEnded", () => {
+			socket.broadcast.emit("callEnded");
+		});
 	});
 });
 

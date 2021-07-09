@@ -41,9 +41,6 @@ const  App = () => {
     return (
         <div className={classes.wrapper}>
             <Videoplayer />
-            <Options>
-                <Notifications />
-            </Options>
             <Buttons />
             <Popup />
             <Chat />

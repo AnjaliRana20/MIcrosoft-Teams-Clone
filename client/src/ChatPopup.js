@@ -1,6 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
-import ModalButton from './PopupButton';
+import ModalButton from './ChatPopupButton';
 import style from './styles.css';
 import App from './components/Chat/src/App';
 class Chat extends React.Component {
@@ -26,8 +26,7 @@ class Chat extends React.Component {
           className={{ base: [style.base]}}
           overlayClassName={{ base: [style.overlayBase] }}
           isOpen={this.state.modalOpened}
-          onRequestClose={this.toggleModal}
-          
+          onRequestClose={this.toggleModal} 
         >
         <App />          
         </Modal>

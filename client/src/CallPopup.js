@@ -3,6 +3,7 @@ import Modal from 'react-modal';
 import ModalButton from './PopupButton';
 import style from './styles.css';
 import Options from './components/Options';
+import Notifications from './components/Notifications';
 class PopUp extends React.Component {
   constructor() {
     super();
@@ -20,16 +21,16 @@ class PopUp extends React.Component {
     return (
       <div className={style.modalWrapper}>
         <ModalButton handleClick={this.toggleModal}>
-          
         </ModalButton>
         <Modal
           className={{ base: [style.base]}}
           overlayClassName={{ base: [style.overlayBase] }}
           isOpen={this.state.modalOpened}
           onRequestClose={this.toggleModal}
-          
         >
-        <Options />          
+        <Options>
+                <Notifications />
+            </Options>          
         </Modal>
       </div>
     );

@@ -1,26 +1,40 @@
-import React from 'react';
+import React, { useContext, useState } from 'react'
 import style from './styles.css';
 import { makeStyles } from '@material-ui/core/styles'
-import { Button } from '@material-ui/core'
-import { PhoneOutlined } from '@material-ui/icons';
+import { Button, Typography } from '@material-ui/core'
+import { VideoCallOutlined } from '@material-ui/icons';
 const useStyles = makeStyles((theme) => ({
     header: { 
-      backgroundColor: "#000000",
-      textAlign: "right",
+      backgroundColor: '	#303030',
+      textAlign: "left",
       padding: "10px",
       position: "fixed",
-      right: "0",
+      left: "0",
       top: "0",
       height: "30px",
-      width: "100%",
+      width: "80%",
       },
     }));
    
 const ModalButton = props => {
     const classes = useStyles();
+    const [isPopupOn, setIsPopupOn] = useState(false);
+    
     return ( 
     <div className={ classes.header }>
-    <Button style={{backgroundColor: '#696969', color: '#FFFFFF'}} startIcon={<PhoneOutlined style={{fontSize:20}}/>} onClick={props.handleClick}>{props.children}</Button>
+    {isPopupOn ?(
+          <Button style={{backgroundColor: '#696969', borderRadius: '30%', color: '#FFFFFF', height:'35px', width:'10px'}} 
+          startIcon={<VideoCallOutlined style={{fontSize:25, height:'30px', width:'40px'}}/>} 
+          onClick={() => {setIsPopupOn(!isPopupOn); 
+            props.handleClick()}} >
+              
+              {props.children}
+              </Button>
+          
+          ):(
+          <Button style={{backgroundColor: '#000000', borderRadius: '30%', color: '#FFFFFF',  height:'35px', width:'10px', shape: 'circle'}} startIcon={<VideoCallOutlined style={{fontSize:25, height:'30px', width:'40px'}}/>} onClick={() => {setIsPopupOn(!isPopupOn); props.handleClick()}} >{props.children}</Button>
+          )}
+    
     </div>
     );
     };
