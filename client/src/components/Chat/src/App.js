@@ -36,6 +36,7 @@ function randomColor() {
 }
 
 class App extends Component {
+
   state = {
     messages: [],
     member: {
@@ -46,7 +47,6 @@ class App extends Component {
 
   constructor() {
     super();
-   
     this.drone = new window.Scaledrone("tpAc0KHm2lmhdTSb", {
       data: this.state.member
     });
