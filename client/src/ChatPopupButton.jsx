@@ -32,7 +32,7 @@ const ModalButton = props => {
               </Button>
           
           ):(
-          <Button style={{backgroundColor: '#000000', borderRadius: '30%', color: '#FFFFFF', height:'35px', width:'10px', shape: 'circle'}} startIcon={<Chat style={{fontSize:25, height:'30px', width:'40px'}}/>} onClick={() => {setIsChatPopupOn(!isChatPopupOn); props.handleClick()}} >{props.children}</Button>
+          <Button style={{backgroundColor: '#000000', borderRadius: '60%', color: '#FFFFFF', bottom:'5px', height:'40px', width:'10px', shape: 'circle'}} startIcon={<Chat style={{fontSize:25, height:'30px', width:'40px'}}/>} onClick={() => {setIsChatPopupOn(!isChatPopupOn); props.handleClick()}} >{props.children}</Button>
           )}
     </div>
     );

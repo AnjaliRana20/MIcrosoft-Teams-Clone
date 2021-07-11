@@ -23,7 +23,7 @@ const ModalButton = props => {
     return ( 
     <div className={ classes.header }>
     {isPopupOn ?(
-          <Button style={{backgroundColor: '#696969', borderRadius: '30%', color: '#FFFFFF', height:'35px', width:'10px'}} 
+          <Button style={{backgroundColor: '#696969', bottom:'5px', borderRadius: '60%', color: '#FFFFFF', height:'40px', width:'10px'}} 
           startIcon={<VideoCallOutlined style={{fontSize:25, height:'30px', width:'40px'}}/>} 
           onClick={() => {setIsPopupOn(!isPopupOn); 
             props.handleClick()}} >
@@ -32,7 +32,7 @@ const ModalButton = props => {
               </Button>
           
           ):(
-          <Button style={{backgroundColor: '#000000', borderRadius: '30%', color: '#FFFFFF',  height:'35px', width:'10px', shape: 'circle'}} startIcon={<VideoCallOutlined style={{fontSize:25, height:'30px', width:'40px'}}/>} onClick={() => {setIsPopupOn(!isPopupOn); props.handleClick()}} >{props.children}</Button>
+          <Button style={{backgroundColor: '#000000', bottom:'5px', borderRadius: '60%', color: '#FFFFFF',  height:'40px', width:'10px', shape: 'circle'}} startIcon={<VideoCallOutlined style={{fontSize:25, height:'30px', width:'40px'}}/>} onClick={() => {setIsPopupOn(!isPopupOn); props.handleClick()}} >{props.children}</Button>
           )}
     
     </div>

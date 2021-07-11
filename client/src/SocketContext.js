@@ -12,14 +12,13 @@ const ContextProvider = ({ children }) => {
   const [callEnded, setCallEnded] = useState(false);
   const [stream, setStream] = useState();
   const [name, setName] = useState('');
-  const [userName, setUserName] = useState('');
   const [call, setCall] = useState({});
   const [me, setMe] = useState('');
   const senders = useRef([]);
   const myVideo = useRef();
   const userVideo = useRef();
   const connectionRef = useRef();
- 
+  const [screenSwitch, setScreenSwitch] = useState();
   useEffect(() => {
     navigator.mediaDevices.getUserMedia({ video: true, audio: true })
       .then((currentStream) => {
@@ -95,7 +94,7 @@ const ContextProvider = ({ children }) => {
   let videoSwitch = true;
   
   function toggleVideo(){
-    if(stream != null && stream.getVideoTracks().length > 0){
+    if(stream != null && !screenSwitch && stream.getVideoTracks().length > 0){
       videoSwitch = !videoSwitch;
       
       stream.getVideoTracks()[0].enabled = videoSwitch;
@@ -103,22 +102,46 @@ const ContextProvider = ({ children }) => {
   }
   
   function toggleMic(){
-    if(stream != null && stream.getAudioTracks().length > 0){
+    if(stream != null && !screenSwitch &&stream.getAudioTracks().length > 0){
       micSwitch = !micSwitch;
   
       stream.getAudioTracks()[0].enabled = micSwitch;
     }  
   }
 
-  function shareScreen() {
+ 
+  function shareScreenOn() {
     navigator.mediaDevices.getDisplayMedia({ cursor: true }).then(stream => {
-        var screenTrack = stream.getTracks()[0];
-        console.log(stream.getTracks()[0]);
-        senders.current.find(sender => sender.track.kind === 'video').replaceTrack(screenTrack);
-        screenTrack.onended = function() {
-            senders.current.find(sender => sender.track.kind === "video").replaceTrack(stream.current.getTracks()[1]);
-        }
+      const screenTrack = stream.getTracks()[0];
+      stream.current = screenTrack;
+      myVideo.current.srcObject = stream;
+      setStream(stream);
+      setScreenSwitch(true);
+      
     })
+  }
+
+  function shareScreenOff() {
+    stream.getTracks().forEach(track => track.stop());
+    
+    if(videoSwitch){
+      navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then(stream => {
+        const screenTrack = stream.getVideoTracks()[0];
+        stream.current = screenTrack;
+        myVideo.current.srcObject = stream;
+        setStream(stream);
+      })
+    }
+    else{
+      navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then(stream => {
+        const screenTrack = stream.getVideoTracks()[0];
+        stream.current = screenTrack;
+        myVideo.current.srcObject = stream;
+        stream.getVideoTracks()[0].enabled = false;
+        setStream(stream);
+      })
+    }
+    setScreenSwitch(false);
   }
   return (
     <SocketContext.Provider value={{
@@ -131,12 +154,14 @@ const ContextProvider = ({ children }) => {
       setName,
       callEnded,
       me,
+      shareScreenOff,
+      shareScreenOn,
       callUser,
       leaveCall,
       answerCall,
       toggleVideo,
       toggleMic,
-      shareScreen,
+      
       micSwitch,
       videoSwitch,
     }}
