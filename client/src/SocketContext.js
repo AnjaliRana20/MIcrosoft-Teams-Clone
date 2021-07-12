@@ -74,7 +74,7 @@ const ContextProvider = ({ children }) => {
     socket.on('callAccepted', (signal) => {
       window.localStorage.removeItem("state");
       setCallAccepted(true);
-      setCall({to: 'Isha'});
+      setCall({to: 'Aisha'});
       peer.signal(signal);
     });
 
