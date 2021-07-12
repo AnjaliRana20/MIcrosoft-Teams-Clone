@@ -24,7 +24,7 @@ const ModalButton = props => {
     return ( 
     <div className={ classes.header }>
     {isChatPopupOn ?(
-          <Button style={{backgroundColor: '#696969', borderRadius: '30%', color: '#FFFFFF', height:'35px', width:'10px'}} 
+          <Button style={{backgroundColor: '#696969', borderRadius: '60%', color: '#FFFFFF', bottom:'5px', height:'40px', width:'10px'}} 
           startIcon={<Chat style={{fontSize:25, height:'30px', width:'40px'}}/>} 
           onClick={() => {setIsChatPopupOn(!isChatPopupOn); 
             props.handleClick()}} >

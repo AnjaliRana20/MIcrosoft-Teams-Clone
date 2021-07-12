@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
 
 io.on("connection", (socket) => {      // Backend, contains what to do after having connection to the socket
 	
-	socket.emit("me", socket.id);   // me since I joined
+	socket.emit("me", socket.id);  
 	
 	socket.on("disconnect", () => {
 		socket.broadcast.emit("callEnded")

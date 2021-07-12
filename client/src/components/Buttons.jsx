@@ -6,7 +6,7 @@ import { SocketContext } from '../SocketContext';
 
 const useStyles = makeStyles((theme) => ({
   footer: { 
-    backgroundColor: '	#303030',
+    backgroundColor: '#333333',
     
     textAlign: "center",
     padding: "10px",

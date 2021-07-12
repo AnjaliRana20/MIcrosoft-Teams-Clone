@@ -62,7 +62,7 @@ constructor() {
           ) : null}
           </ul>
         
-        <form onSubmit={e => this.onSubmit(e)}>
+        <form onSubmit = {e => this.onSubmit(e)}>
         <button
           type="button"
           className="toggle-emoji"
