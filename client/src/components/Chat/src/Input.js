@@ -3,6 +3,8 @@ import React from "react";
 import { Smile } from 'react-feather';
 import 'emoji-mart/css/emoji-mart.css'
 import { Picker } from 'emoji-mart'
+
+// Emoji toggle when clicked function 
 function toggleEmojiPicker() {
   this.setState({
     showEmojiPicker: !this.state.showEmojiPicker,
@@ -22,9 +24,12 @@ class Input extends Component {
     this.setState({text: ""});
     this.props.onSendMessage(this.state.text);
   }
+  
   handleChange = e => {
     this.setState({ text: e.target.value })
   }
+
+  // Add emoji function to text when showEmojiPicker is ON
   addEmoji = e => {
     let sym = e.unified.split('-')
     let codesArray = []
@@ -38,31 +43,40 @@ class Input extends Component {
     e.preventDefault()
     postMessage(this.state)   //send to backend
     this.setState({ text: '' })  //reset input field to empty
-}
-constructor() {
-  super();
-  this.state = {
-    // [..]
-    showEmojiPicker: false,
-  };
-  this.toggleEmojiPicker = toggleEmojiPicker.bind(this);
-  // [..]
-}
+  }
+
+  constructor() {
+    super();
+
+    // define state
+    this.state = {
+      showEmojiPicker: false,
+    };
+    this.toggleEmojiPicker = toggleEmojiPicker.bind(this);
+  }
+
   render() {
+
     const {
-      // [..]
       showEmojiPicker,
     } = this.state;
 
     return (
       <div className="Input">
+
+        {/* Send emojis on change */}
+
+        {/* If showEmojiPicker is ON, then select emoji */}
         <ul>
         {showEmojiPicker ? (
           <Picker onSelect={this.addEmoji} />
           ) : null}
-          </ul>
+        </ul>
         
+        {/* Submit on change */}
         <form onSubmit = {e => this.onSubmit(e)}>
+        
+        {/* Smile button for emoji, which on click toggles */}
         <button
           type="button"
           className="toggle-emoji"
@@ -70,14 +84,17 @@ constructor() {
         >
           <Smile />
         </button>
-          <input
-            onChange={e => this.onChange(e)}
-            value={this.state.text}
-            type="text"
-            placeholder="Enter your message and press ENTER"
-            autofocus="true"
-          />
-          <button>Send</button>
+        
+        {/* Send text inputs on change */}
+        <input
+          onChange={e => this.onChange(e)}
+          value={this.state.text}
+          type="text"
+          placeholder="Enter your message"
+          autofocus="true"
+        />
+
+        <button>Send</button>
         </form>
       </div>
     );

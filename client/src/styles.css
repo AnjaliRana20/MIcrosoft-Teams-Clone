@@ -1,11 +1,13 @@
  
+/* Styling for App background */
+
 body {
     background:
     linear-gradient(
-      rgba(1, 1, 1, 0.5), 
-      rgba(1, 1, 1, 0.5)
+      rgba(1, 1, 1, 0.1), 
+      rgba(1, 1, 1, 0.1)
     ),
-    url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmqB3SL28nSbaxNGckJ2HHKNI1-k_ohNsoVjJVLhvhG6G4ij9hur-vjKRH0YpEufjZIwI&usqp=CAU);
+    url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAhmdCBaC915mO_ffo_8Kz1CEiSH-SWAoh8w&usqp=CAU);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;

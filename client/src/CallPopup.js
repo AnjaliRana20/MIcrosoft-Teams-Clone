@@ -1,3 +1,6 @@
+
+// Popup for making a New Call
+
 import React from 'react';
 import Modal from 'react-modal';
 import ModalButton from './PopupButton';
@@ -7,11 +10,11 @@ import Notifications from './components/Notifications';
 class PopUp extends React.Component {
   constructor() {
     super();
-
     this.state = { modalOpened: false };
     this.toggleModal = this.toggleModal.bind(this);
   }
-
+  
+  // Toggle the popup on click
   toggleModal() {
     this.setState(prevState => ({ modalOpened: !prevState.modalOpened }));
   }
@@ -26,11 +29,11 @@ class PopUp extends React.Component {
           className={{ base: [style.base]}}
           overlayClassName={{ base: [style.overlayBase] }}
           isOpen={this.state.modalOpened}
-          onRequestClose={this.toggleModal}
-        >
-        <Options>
-                <Notifications />
-            </Options>          
+          onRequestClose={this.toggleModal}>
+          {/* Show the contents of Options and Notifications here*/}
+          <Options>
+            <Notifications/>
+          </Options>          
         </Modal>
       </div>
     );

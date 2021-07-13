@@ -11,6 +11,7 @@ class Messages extends Component {
     );
   }
 
+  // Show Message sent by current member using his ID which was selected randomly
   renderMessage(message) {
     const {member, text} = message;
     const {currentMember} = this.props;

@@ -1,3 +1,6 @@
+// This file is connected to SocketContext.js
+//  Backend
+
 const app = require("express")();
 const server = require("http").createServer(app);
 const cors = require("cors");
@@ -22,24 +25,24 @@ io.on("connection", (socket) => {      // Backend, contains what to do after hav
 	socket.emit("me", socket.id);  
 	
 	socket.on("disconnect", () => {
-		socket.broadcast.emit("callEnded")
-		socket.on("callEnded", () => {
-			socket.broadcast.emit("callEnded");
-		  });
+		socket.broadcast.emit("callEnded");
+		
 	});
 
+	// callUser was emitted in SocketContext.js and set the parameters name and id of the caller
 	socket.on("callUser", ({ userToCall, signalData, from, name }) => {
 		io.to(userToCall).emit("callUser", { signal: signalData, from, name});
-		socket.on("callEnded", () => {
-			socket.broadcast.emit("callEnded");
-		  });
 	});
 
+	// answerUser was emitted in SocketContext.js and set the parameters to and signal
 	socket.on("answerCall", (data) => {
 		io.to(data.to).emit("callAccepted", data.signal)
-		socket.on("callEnded", () => {
-			socket.broadcast.emit("callEnded");
-		});
+	});
+
+	// callEnded was emitted in SocketContext.js, here we give signal to 
+	// the other end for reloading the page if call is cut on one end
+	socket.on("callEnded", () => {
+		socket.broadcast.emit("callEnded");
 	});
 });
 

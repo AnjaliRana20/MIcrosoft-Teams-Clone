@@ -3,6 +3,8 @@ import './App.css';
 import Messages from "./Messages";
 import Input from "./Input";
 
+
+// Combination of adjectives and nouns will be used to give ANONYMOUS username
 function randomName() {
   const adjectives = [
     "autumn", "hidden", "bitter", "misty", "silent", "empty", "dry", "dark",
@@ -31,12 +33,13 @@ function randomName() {
   return adjective + noun;
 }
 
+// Give avatar of random colour to user
 function randomColor() {
   return '#' + Math.floor(Math.random() * 0xFFFFFF).toString(16);
 }
-
 class App extends Component {
 
+  // Define state along with username
   state = {
     messages: [],
     member: {
@@ -47,6 +50,7 @@ class App extends Component {
 
   constructor() {
     super();
+    // Entered my scaledrone API by logging in at the scaledrone website
     this.drone = new window.Scaledrone("tpAc0KHm2lmhdTSb", {
       data: this.state.member
     });
@@ -54,10 +58,13 @@ class App extends Component {
       if (error) {
         return console.error(error);
       }
+      // Initialise member and his id
       const member = {...this.state.member};
       member.id = this.drone.clientId;
       this.setState({member});
     });
+
+    // Initialise room
     const room = this.drone.subscribe("observable-room");
     room.on('data', (data, member) => {
       const messages = this.state.messages;
@@ -72,10 +79,12 @@ class App extends Component {
         <div className="App-header">
           <h1>Chat</h1>
         </div>
+        {/* Take messages from Message.js file */}
         <Messages
           messages={this.state.messages}
           currentMember={this.state.member}
         />
+        {/* Take Input from Input.js file */}
         <Input
           onSendMessage={this.onSendMessage}
         />
@@ -83,6 +92,7 @@ class App extends Component {
     );
   }
 
+  // Show the message
   onSendMessage = (message) => {
     this.drone.publish({
       room: "observable-room",

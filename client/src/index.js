@@ -1,3 +1,5 @@
+// Render the whole App here
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -8,7 +10,6 @@ import './styles.css';
 ReactDOM.render(
     <ContextProvider>
       <App />
-      
     </ContextProvider>,
     document.getElementById('root'),
   );

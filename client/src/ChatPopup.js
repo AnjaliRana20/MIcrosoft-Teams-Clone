@@ -1,3 +1,5 @@
+
+// Chat PopUp
 import React from 'react';
 import Modal from 'react-modal';
 import ModalButton from './ChatPopupButton';
@@ -11,6 +13,7 @@ class Chat extends React.Component {
     this.toggleModal = this.toggleModal.bind(this);
   }
 
+  // Open/Close Popup on click
   toggleModal() {
     this.setState(prevState => ({ modalOpened: !prevState.modalOpened }));
   }
@@ -20,7 +23,6 @@ class Chat extends React.Component {
     return (
       <div className={style.modalWrapper}>
         <ModalButton handleClick={this.toggleModal}>
-          
         </ModalButton>
         <Modal
           className={{ base: [style.base]}}
@@ -28,7 +30,8 @@ class Chat extends React.Component {
           isOpen={this.state.modalOpened}
           onRequestClose={this.toggleModal} 
         >
-        <App />          
+          {/* Chat App from components is rendered here */}
+          <App />          
         </Modal>
       </div>
     );
