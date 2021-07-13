@@ -42,44 +42,44 @@ This starts backend server at https://localhost:5000: and frontend at https://lo
 
 ## FEATURES: 
 
-### Video Player
+#### Video Player
 - Plays your Video Inline when Video is not turned off.
 - It contains your name at the top.
 
-### Chat: 
+#### Chat: 
 - Allows chat between people while having the call. 
 - Users can start chat before call and continue during call.
 
 
-### Emojis:
+#### Emojis:
 - Allows users to send emojis along with text messages to have interactive chat experience!.
 
 
-### Mute On/Off:
+#### Mute On/Off:
 - Allows users to turn their mic on/off while calling.
 
 
-### Video On/Off:
+#### Video On/Off:
 - Allows users to turn their Video on/off while calling.
 
 
-### Screen Share On/Off:
+#### Screen Share On/Off:
 - Allows users to turn their Screen Share on/off while calling.
 
 
-### Call and Hangup Buttons:
+#### Call and Hangup Buttons:
 - Allows user to decline/accept while receiving call or hangup during call.
 
 
-### Notification Popup:
+#### Notification Popup:
 - Notifications pops up whenever someone calls.
 
-### Chat popup
+#### Chat popup
 - This opens up Chat Dialogue Box.
 - It has send button, emoji button, textbox to enter input.
 - Whenever there is overflow in message, the text adjusts itself in other line. 
 
-### Call info popup
+#### Call info popup
 It contains:
 - It has textfield to enter your name which will appear at the top of video player.
 - Copy to Clipboard button to copy your ID.
@@ -110,4 +110,5 @@ It contains:
 
 You can find the app here:
 https://microsoft-teams-clone-anjali.netlify.app/ 
+
 Feel free to have fun call and chat with your friend!
