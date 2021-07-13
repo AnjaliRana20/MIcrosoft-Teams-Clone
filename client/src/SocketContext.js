@@ -7,8 +7,8 @@ import Peer from 'simple-peer';
 
 const SocketContext = createContext();
 
-const socket = io('http://localhost:5000');
-//const socket = io('https://my-first-video-calling-app.herokuapp.com/');
+//const socket = io('http://localhost:5000');
+const socket = io('https://microsoft-teams-clone-anjali.herokuapp.com/');
 
 const ContextProvider = ({ children }) => {
 
