@@ -2,8 +2,13 @@
 This repo contains a the code for a Video Calling Application. It makes use of `React JS`, Node JS, SocketIO, simple-peer, emoji-mart and scaledrone API. It allows two users to have a `video call` alongwith having `Chat` with interactive `Emojis`.
 
 You can find the app here:
-https://microsoft-teams-clone-anjali.netlify.app/
-Your can also find a brief presentation containing Mockups and features description here: https://docs.google.com/presentation/d/1phaM-zZ-Nr8osRKZxsMOAj5VLOLKjO-50fQe9AaKwdQ/edit#slide=id.gb820fec44c_0_21
+https://microsoft-teams-clone-anjali.netlify.app/ 
+
+Your can also find a brief presentation containing Mockups and features description here :
+
+ https://docs.google.com/presentation/d/1phaM-zZ-Nr8osRKZxsMOAj5VLOLKjO-50fQe9AaKwdQ/edit#slide=id.gb820fec44c_0_21
+
+
 
 
 
@@ -84,21 +89,21 @@ It contains:\
 
 ## GUIDE:
 
-1. Steps for making a video call
+#### Steps for making a video call
 - Click on contact info icon to the top left of the app.
 - Write your name, friend's name whom you want to call and his ID.
 - The other person receives the notification that you are calling.
 
-2. Steps for receiving a call
+#### Steps for receiving a call
 - You will see a notification showing username of the caller at the top.
 - Click on green button to pickup and red to decline.
 
-3. Steps to chat
+#### Steps to chat
 - Click on chat icon to the top right of the app. A popup will appear.
 - Enter your message in the textfield and add emojis of your choice.
 - Click on send to send the message.
 
-4. Steps to turn on/off your mic/video/screenshare
+#### Steps to turn on/off your mic/video/screenshare
 - Click on the toggle buttons at the bottom centre for performing theses functions.
 
 
