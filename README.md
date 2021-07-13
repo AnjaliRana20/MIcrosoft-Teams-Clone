@@ -37,33 +37,70 @@ This starts backend server at https://localhost:5000: and frontend at https://lo
 - Emoji- emoji-mart
 
 ## FEATURES: 
-1. Chat: 
+
+### Video Player
+- Plays your Video Inline when Video is not turned off.
+- It contains your name at the top.
+
+### Chat: 
 - Allows chat between people while having the call. 
 - Users can start chat before call and continue during call.
 
 
-2. Emojis:
+### Emojis:
 - Allows users to send emojis along with text messages to have interactive chat experience!.
 
 
-3. Mute On/Off:
+### Mute On/Off:
 - Allows users to turn their mic on/off while calling.
 
 
-4. Video On/Off:
+### Video On/Off:
 - Allows users to turn their Video on/off while calling.
 
 
-5. Screen Share On/Off:
+### Screen Share On/Off:
 - Allows users to turn their Screen Share on/off while calling.
 
 
-6. Call and Hangup Buttons:
+### Call and Hangup Buttons:
 - Allows user to decline/accept while receiving call or hangup during call.
 
 
-7. Popups:
-Added Notifications popup, Chat popup, Call info popup.
+### Notification Popup:
+- Notifications pops up whenever someone calls.
+
+### Chat popup
+- This opens up Chat Dialogue Box.
+- It has send button, emoji button, textbox to enter input.
+- Whenever there is overflow in message, the text adjusts itself in other line. 
+
+### Call info popup
+It contains:\
+- It has textfield to enter your name which will appear at the top of video player.
+- Copy to Clipboard button to copy your ID.
+- Textfield to enter your friend's name and his ID to which you wish to call.
+
+
+## GUIDE:
+
+1. Steps for making a video call
+- Click on contact info icon to the top left of the app.
+- Write your name, friend's name whom you want to call and his ID.
+- The other person receives the notification that you are calling.
+
+2. Steps for receiving a call
+- You will see a notification showing username of the caller at the top.
+- Click on green button to pickup and red to decline.
+
+3. Steps to chat
+- Click on chat icon to the top right of the app. A popup will appear.
+- Enter your message in the textfield and add emojis of your choice.
+- Click on send to send the message.
+
+4. Steps to turn on/off your mic/video/screenshare
+- Click on the toggle buttons at the bottom centre for performing theses functions.
+
 
 
 Feel free to have fun call and chat with your friend!
