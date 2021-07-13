@@ -1,8 +1,7 @@
 ## Introduction
 This repo contains a the code for a Video Calling Application. It makes use of `React JS`, Node JS, SocketIO, simple-peer, emoji-mart and scaledrone API. It allows two users to have a `video call` alongwith having `Chat` with interactive `Emojis`.
 
-You can find the app here:
-https://microsoft-teams-clone-anjali.netlify.app/ 
+
 
 Your can also find a brief presentation containing Mockups and features description here :
 
@@ -81,7 +80,7 @@ This starts backend server at https://localhost:5000: and frontend at https://lo
 - Whenever there is overflow in message, the text adjusts itself in other line. 
 
 ### Call info popup
-It contains:\
+It contains:
 - It has textfield to enter your name which will appear at the top of video player.
 - Copy to Clipboard button to copy your ID.
 - Textfield to enter your friend's name and his ID to which you wish to call.
@@ -108,4 +107,7 @@ It contains:\
 
 
 
+
+You can find the app here:
+https://microsoft-teams-clone-anjali.netlify.app/ 
 Feel free to have fun call and chat with your friend!
